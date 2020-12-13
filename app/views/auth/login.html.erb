@@ -1,8 +1,49 @@
-<p><%= flash[:success] %></p>
-<p><%= flash[:error] %></p>
-
-<%= form_tag controller: :auth, action: :create_session do %>
-    <%= email_field_tag :email %> <br><br>
-    <%= password_field_tag :password %> <br><br>
-    <%= submit_tag 'Login' %>
-<% end %>
+<div class="row align-items-center w-100">
+    <div class="col-md-7 col-lg-5 m-h-auto">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between m-b-30">
+                    <img class="img-fluid" alt="" src="/panel/assets/images/logo/logo.png">
+                    <h2 class="m-b-0">Login</h2>
+                </div>
+                <% if flash[:error].present? %>
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <%= flash[:error] %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% elsif flash[:success].present? %>
+                    <div class="alert alert-success alert-dismissible fade show">
+                        <%= flash[:success] %>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <% end %>
+                <%= form_tag controller: :auth, action: :create_session do %>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="email">Email:</label>
+                        <div class="input-affix">
+                            <i class="prefix-icon anticon anticon-user"></i>
+                            <%= email_field_tag :email, {}, class: 'form-control', placeholder: 'mail@example.com' %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="password">Password:</label>
+                        <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
+                        <div class="input-affix m-b-10">
+                            <i class="prefix-icon anticon anticon-lock"></i>
+                            <%= password_field_tag :password, {}, class: 'form-control', placeholder: 'password' %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <%= submit_tag 'Login', class: 'btn btn-primary' %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

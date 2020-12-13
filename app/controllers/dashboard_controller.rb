@@ -7,11 +7,14 @@ class DashboardController < ApplicationController
   before_action :authorize_employee, only: [:manage]
 
   def activity
+
   end
 
   def monitoring
+
   end
 
   def manage
+    
   end
 end

@@ -2,15 +2,69 @@
 <html>
   <head>
     <title>Wanage</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="/panel/assets/css/app.min.css" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="app">
+      <div class="layout">
+          <!-- header -->
+          <%= render 'layouts/partial/header' %>
+          <!-- end header -->
+
+          <!-- sidenav -->
+          <%= render 'layouts/partial/sidenav' %>
+          <!-- end sidenav -->
+
+          <!-- container -->
+          <div class="page-container">
+              <!-- wrapper -->
+              <div class="main-content">
+                  <div class="page-header">
+                      <h2 class="header-title"><%= yield(:title) %></h2>
+                      <div class="header-sub-title">
+                          <nav class="breadcrumb breadcrumb-dash">
+                              <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                              <a class="breadcrumb-item" href="#">Breadcrumb 1</a>
+                              <span class="breadcrumb-item active">Breadcrumb 2</span>
+                          </nav>
+                      </div>
+                  </div>
+                  <!-- content -->
+                  <%= yield %>
+                  <!-- end content -->
+              </div>
+              <!-- end wrapper -->
+
+              <!-- footer -->
+              <%= render 'layouts/partial/footer' %>
+              <!-- end footer -->
+          </div>
+          <!-- end container -->
+
+          <!-- search -->
+          <%= render 'layouts/partial/search' %>
+          <!-- end search -->
+
+          <!-- quickview -->
+          <%= render 'layouts/partial/quickview' %>
+          <!-- end quickview -->
+      </div>
+    </div>
+
+    <!-- Core Vendors JS -->
+    <script src="/panel/assets/js/vendors.min.js"></script>
+    <!-- page js -->
+    <!-- Core JS -->
+    <script src="/panel/assets/js/app.min.js"></script>
   </body>
 </html>
