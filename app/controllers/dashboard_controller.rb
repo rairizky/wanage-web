@@ -2,6 +2,9 @@ class DashboardController < ApplicationController
 
   before_action :user_signed_in?
   helper_method :current_user
+  before_action :authorize_admin, only: [:activity]
+  before_action :authorize_supervisor, only: [:monitoring]
+  before_action :authorize_employee, only: [:manage]
 
   def activity
   end

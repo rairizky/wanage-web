@@ -3,3 +3,5 @@
 
 <h1>Home#greet</h1>
 <p>Find me in app/views/home/greet.html.erb</p>
+
+<%= link_to 'Logout', logout_user_path(current_user.id), method: :delete %>
