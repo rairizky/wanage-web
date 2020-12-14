@@ -12,6 +12,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link href="/panel/assets/css/app.min.css" rel="stylesheet">
+    <link href="/panel/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -31,13 +32,13 @@
               <div class="main-content">
                   <div class="page-header">
                       <h2 class="header-title"><%= yield(:title) %></h2>
-                      <div class="header-sub-title">
+                      <!-- <div class="header-sub-title">
                           <nav class="breadcrumb breadcrumb-dash">
                               <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
                               <a class="breadcrumb-item" href="#">Breadcrumb 1</a>
                               <span class="breadcrumb-item active">Breadcrumb 2</span>
                           </nav>
-                      </div>
+                      </div> -->
                   </div>
                   <!-- content -->
                   <%= yield %>
@@ -64,7 +65,11 @@
     <!-- Core Vendors JS -->
     <script src="/panel/assets/js/vendors.min.js"></script>
     <!-- page js -->
+    <script src="/panel/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!-- Core JS -->
     <script src="/panel/assets/js/app.min.js"></script>
+    <script>
+      $('.datepicker-input').datepicker();
+    </script>
   </body>
 </html>
