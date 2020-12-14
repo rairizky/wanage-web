@@ -69,7 +69,9 @@
     <!-- Core JS -->
     <script src="/panel/assets/js/app.min.js"></script>
     <script>
-      $('.datepicker-input').datepicker();
+      $('.datepicker-input').datepicker({
+        format: "yyyy-mm-dd"
+      });
     </script>
   </body>
 </html>

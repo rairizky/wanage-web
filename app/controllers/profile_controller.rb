@@ -12,11 +12,11 @@ class ProfileController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @profile = @user.create_profile(profile_params)
-    if @profile.valid?
-      flash[:success] = 'Create profile success!'
+    @create_profile = ProfileServices::NewProfileServices.new(@user, @profile, flash).create
+    if @create_profile
       redirect_to profile_index_path
     else
-      
+      render :index
     end
   end
 
@@ -26,7 +26,7 @@ class ProfileController < ApplicationController
     if @get_user.update(profile_params)
       flash[:success] = 'Update profile success'
     else
-
+      
     end
   end
 
