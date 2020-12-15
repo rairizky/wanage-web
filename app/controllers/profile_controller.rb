@@ -12,8 +12,8 @@ class ProfileController < ApplicationController
   def create
     @user = User.find(session[:user_id])
     @profile = @user.create_profile(profile_params)
-    @create_profile = ProfileServices::NewProfileServices.new(@user, @profile, flash).create
-    if @create_profile
+    if @profile.valid?
+      flash[:success] = 'Create profile success!'
       redirect_to profile_index_path
     else
       render :index
@@ -25,8 +25,13 @@ class ProfileController < ApplicationController
     @get_user = @user.profile
     if @get_user.update(profile_params)
       flash[:success] = 'Update profile success'
+      if params[:profile][:avatar].present?
+        @get_user.remove_avatar!
+        @get_user.save   
+      end
+      redirect_to profile_index_path
     else
-      
+      render :index
     end
   end
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # profile
   scope 'profile/' do
     get '/', to: 'profile#index', as: 'profile_index'
-    post '/', to: 'profile#create', as: 'profile_create'
+    post '/create', to: 'profile#create', as: 'profile_create'
     patch '/update', to: 'profile#update', as: 'profile_update'
   end
 
