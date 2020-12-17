@@ -2,9 +2,11 @@ class ProfileController < ApplicationController
 
   before_action :user_signed_in?
   helper_method :current_user
+  rescue_from Pundit::NotAuthorizedError, with: :authorize_error
 
   def index
     @user = User.find(session[:user_id])
+    authorize @user, policy_class: ProfilePolicy
     @get_user = @user.profile
     @profile = Profile.new
   end
@@ -23,11 +25,12 @@ class ProfileController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     @get_user = @user.profile
+    authorize @get_user
     if @get_user.update(profile_params)
       flash[:success] = 'Update profile success'
       if params[:profile][:avatar].present?
-        @get_user.remove_avatar!
-        @get_user.save   
+        @get_user.save
+        @get_user.remove_avatar!   
       end
       redirect_to profile_index_path
     else

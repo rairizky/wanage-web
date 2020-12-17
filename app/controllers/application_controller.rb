@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+    include Pundit
+
     def current_user
         if session[:user_id]
             User.find(session[:user_id])
@@ -18,29 +20,25 @@ class ApplicationController < ActionController::Base
             return false
         end
     end
+    
+    def authorize_error
+        flash[:error] = 'You are not authorized!'
+        redirect_to home_index_path, method: :get
+    end
 
     def authorize_admin 
-        user = User.find(session[:user_id]).role == 'admin'
-        unless user
-            flash[:error] = 'You are not authorized!'
-            redirect_to home_index_path
-        end
+        user = User.find(session[:user_id]).admin?
+        authorize_error unless user
     end
 
     def authorize_supervisor
-        user = User.find(session[:user_id]).role == 'supervisor'
-        unless user
-            flash[:error] = 'You are not authorized!'
-            redirect_to home_index_path
-        end
+        user = User.find(session[:user_id]).supervisor?
+        authorize_error unless user
     end
 
     def authorize_employee 
-        user = User.find(session[:user_id]).role == 'employee'
-        unless user
-            flash[:error] = 'You are not authorized!'
-            redirect_to home_index_path
-        end
+        user = User.find(session[:user_id]).employee?
+        authorize_error unless user
     end
 
 end
