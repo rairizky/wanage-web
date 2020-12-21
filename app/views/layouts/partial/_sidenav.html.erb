@@ -49,6 +49,108 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-idcard"></i>
+                    </span>
+                    <span class="title">Class</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="#">
+                        <a href="#">Add Class</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">Add Author Class</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">Add Employee Class</a>
+                    </li>
+                </ul>
+            </li>
+            <% end %>
+            <% if policy(current_user).role_supervisor? %>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-solution"></i>
+                    </span>
+                    <span class="title">Room</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="#">
+                        <a href="#">Own Room</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">Manage Room</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-exception"></i>
+                    </span>
+                    <span class="title">Order</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="#">
+                        <a href="#">Send Order</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">List Employee</a>
+                    </li>
+                </ul>
+            </li>
+            <% end %>
+            <% if policy(current_user).role_employee? %>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-profile"></i>
+                    </span>
+                    <span class="title">Task</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="#">
+                        <a href="#">New Task</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">Task Finished</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="javascript:void(0);">
+                    <span class="icon-holder">
+                        <i class="anticon anticon-inbox"></i>
+                    </span>
+                    <span class="title">Item</span>
+                    <span class="arrow">
+                        <i class="arrow-icon"></i>
+                    </span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="#">
+                        <a href="#">Create Item</a>
+                    </li>
+                    <li class="#">
+                        <a href="#">List Item</a>
+                    </li>
+                </ul>
+            </li>
             <% end %>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
