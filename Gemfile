@@ -24,7 +24,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pundit'
 gem 'carrierwave', '~> 2.0'
 gem "breadcrumbs_on_rails"
-
+gem 'ransack'
+gem 'kaminari'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

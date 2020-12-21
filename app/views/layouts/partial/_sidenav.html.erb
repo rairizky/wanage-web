@@ -12,17 +12,24 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
+                    <% if policy(current_user).role_admin? %>
                     <li class="<%= class_names(active: current_page?(dashboard_activity_path)) %>">
                         <%= link_to 'Activity', dashboard_activity_path, method: :get %>
                     </li>
+                    <% end %>
+                    <% if policy(current_user).role_supervisor? %>
                     <li class="<%= class_names(active: current_page?(dashboard_monitoring_path)) %>">
                         <%= link_to 'Monitoring', dashboard_monitoring_path, method: :get %>
                     </li>
+                    <% end %>
+                    <% if policy(current_user).role_employee? %>
                     <li class="<%= class_names(active: current_page?(dashboard_manage_path)) %>">
                         <%= link_to 'Manage', dashboard_manage_path, method: :get %>
                     </li>
+                    <% end %>
                 </ul>
             </li>
+            <% if policy(current_user).role_admin? %>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
@@ -34,14 +41,15 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a href="">Create User</a>
+                    <li class="<%= class_names(active: current_page?(user_new_path)) %>">
+                        <%= link_to 'Create User', user_new_path, method: :get %>
                     </li>
-                    <li>
-                        <a href="">Management</a>
+                    <li class="<%= class_names(active: current_page?(user_management_path)) %>">
+                        <%= link_to 'Management', user_management_path, method: :get %>
                     </li>
                 </ul>
             </li>
+            <% end %>
             <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="javascript:void(0);">
                     <span class="icon-holder">
