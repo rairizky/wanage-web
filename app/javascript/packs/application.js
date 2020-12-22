@@ -14,3 +14,4 @@ ActiveStorage.start()
 
 require('jquery')
 import "@fortawesome/fontawesome-free/js/all";
+

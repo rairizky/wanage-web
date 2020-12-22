@@ -39,7 +39,26 @@
     <!-- Core Vendors JS -->
     <script src="/panel/assets/js/vendors.min.js"></script>
     <!-- page js -->
+    <script src="/panel/assets/vendors/jquery-validation/jquery.validate.min.js"></script>
     <!-- Core JS -->
     <script src="/panel/assets/js/app.min.js"></script>
+
+    <script>
+        $("#form-validation").validate({
+            ignore: ':hidden:not(checkbox)',
+            errorElement: 'label',
+            errorClass: 'is-invalid',
+            validClass: 'is-valid',
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true
+                }
+            }
+        })
+    </script>
   </body>
 </html>

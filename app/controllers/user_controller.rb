@@ -22,7 +22,11 @@ class UserController < ApplicationController
 
   def management
     @query = User.ransack(params[:q])
-    @users = @query.result.page(params[:page]).per(5)
+    @users = @query.result.page(params[:page]).per(10)
+    respond_to do |format|
+      format.html # management.html.erb
+      format.js # management.js.erb
+    end
   end
 
   private

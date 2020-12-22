@@ -1,0 +1,40 @@
+<div class="display-user">
+    <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"><%= sort_link @query, :name, 'Name', {}, {remote: true} %></th>
+                <th scope="col"><%= sort_link @query, :email, 'Email', {}, {remote: true} %></th>
+                <th scope="col">Role</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @users.each_with_index do |user, index| %>
+            <tr>
+                <td><%= index+1 %></td>
+                <td><%= user.name.titleize %></td>
+                <td><%= user.email %></td>
+                <td><span class="badge badge-pill badge-secondary"><%= user.role.titleize%></span></td>
+                <td>
+                    <%= link_to 'Edit' %>
+                    <%= link_to 'Delete' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <br>
+    <div class="d-flex justify-content-between align-items-center">
+        <%= form_tag user_management_path, method: :get, remote: true do %>
+            <label>Satu halaman menampilkan 
+                <select name="q[per_page]" onchange="this.form.submit();">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                </select>
+                dari <strong><%= @users.total_count %></strong> data</label>
+        <% end %>
+        <%= paginate @users, remote: true %>
+    </div>
+</div>
